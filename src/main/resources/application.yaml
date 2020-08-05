@@ -1,0 +1,32 @@
+server:
+  port: 8013
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        order:
+          consumer:
+            partitioned: true
+          destination: orders-in
+          binder: kafka1
+          group: order
+        account:
+          consumer:
+            partitioned: true
+          destination: account-in
+          binder: kafka2
+          group: account
+      binders:
+        kafka1:
+          type: kafka
+          environment:
+            spring:
+              kafka:
+                bootstrap-servers: kafka1:9092
+        kafka2:
+          type: kafka
+          environment:
+            spring:
+              kafka:
+                bootstrap-servers: kafka1:9092
