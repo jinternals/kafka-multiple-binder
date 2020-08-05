@@ -4,5 +4,6 @@
 ```
 mvn clean install
 docker build -t kafka-service -f ./target/docker-resources/Dockerfile target/         
+docker-compose up -d
 
 ```
